@@ -1,0 +1,12 @@
+### POST New Trash
+POST localhost:8081/api/trashes
+Content-Type: application/json
+
+{
+  "name": "Besi",
+  "price": 2000,
+  "unit": "kg"
+}
+
+### GET All Trash
+GET localhost:8081/api/trashes?size=5&page=1
