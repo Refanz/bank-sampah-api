@@ -3,10 +3,26 @@ POST localhost:8081/api/trashes
 Content-Type: application/json
 
 {
-  "name": "Besi",
+  "name": "Kaca",
   "price": 2000,
   "unit": "kg"
 }
 
 ### GET All Trash
 GET localhost:8081/api/trashes?size=5&page=1
+
+### GET Trash By ID
+GET localhost:8081/api/trashes/acf72a7c-1197-48e5-a759-bd45b1f20ffd
+
+### DELETE Trash By ID
+DELETE localhost:8081/api/trashes/13754353-61b5-40e1-a033-cd6e177f3363
+
+### UPDATE Trash
+PUT localhost:8081/api/trashes/acf72a7c-1197-48e5-a759-bd45b1f20ffd
+Content-Type: application/json
+
+{
+  "name": "Kaca",
+  "price": 2000,
+  "unit": "kg"
+}

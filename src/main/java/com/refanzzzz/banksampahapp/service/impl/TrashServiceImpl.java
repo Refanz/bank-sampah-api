@@ -10,8 +10,10 @@ import com.refanzzzz.banksampahapp.repository.TrashRepository;
 import com.refanzzzz.banksampahapp.service.TrashService;
 import com.refanzzzz.banksampahapp.util.PagingUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,10 +24,10 @@ public class TrashServiceImpl implements TrashService {
 
     private final TrashRepository trashRepository;
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
-    public TrashResponse saveTrash(TrashRequest request) {
+    public void saveTrash(TrashRequest request) {
         trashRepository.saveTrash(UUID.randomUUID().toString(), request.getName(), request.getUnit(), request.getPrice());
-        return null;
     }
 
     @Transactional(readOnly = true)
@@ -49,14 +51,32 @@ public class TrashServiceImpl implements TrashService {
         return mapToTrashPagingResponse(trashResponses, pagingResponse);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
-    public TrashResponse updateTrash(String id, TrashRequest request) {
-        return null;
+    public void updateTrash(String id, TrashRequest request) {
+        Trash trash = getTrashById(id);
+
+        if (trash != null) {
+            trashRepository.updateTrash(request.getName(), request.getUnit(), request.getPrice(), id);
+        }
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void deleteTrashById(String id) {
-        trashRepository.deleteTrashById(id);
+        Trash trash = getTrashById(id);
+
+        if (trash != null) {
+            trashRepository.deleteTrashById(id);
+        }
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public Trash getTrashById(String id) {
+        Trash trash = trashRepository.getTrashById(id);
+        if (trash == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Trash is not found!");
+        return trash;
     }
 
     private TrashResponse mapToTrashResponse(Trash trash) {

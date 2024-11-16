@@ -3,8 +3,8 @@ package com.refanzzzz.banksampahapp.controller;
 import com.refanzzzz.banksampahapp.constant.Constant;
 import com.refanzzzz.banksampahapp.dto.request.TrashPagingRequest;
 import com.refanzzzz.banksampahapp.dto.request.TrashRequest;
-import com.refanzzzz.banksampahapp.dto.response.TrashResponse;
 import com.refanzzzz.banksampahapp.dto.response.TrashWithPagingResponse;
+import com.refanzzzz.banksampahapp.entity.Trash;
 import com.refanzzzz.banksampahapp.service.TrashService;
 import com.refanzzzz.banksampahapp.util.ResponseUtil;
 import lombok.RequiredArgsConstructor;
@@ -35,9 +35,27 @@ public class TrashController {
         return ResponseUtil.createResponseWithPaging(HttpStatus.OK, "Successfully get all trash", trashResponse.getTrashes(), trashResponse.getPaging());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getTrashById(@PathVariable String id) {
+        Trash trash = trashService.getTrashById(id);
+        return ResponseUtil.createResponse(HttpStatus.OK, "Successfully get trash", trash);
+    }
+
     @PostMapping
     public ResponseEntity<?> saveTrash(@RequestBody TrashRequest request) {
-        TrashResponse trashResponse = trashService.saveTrash(request);
-        return ResponseUtil.createResponse(HttpStatus.CREATED, "Successfully create new trash", trashResponse);
+        trashService.saveTrash(request);
+        return ResponseUtil.createResponse(HttpStatus.CREATED, "Successfully create new trash", null);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateTrash(@PathVariable String id, @RequestBody TrashRequest request) {
+        trashService.updateTrash(id, request);
+        return ResponseUtil.createResponse(HttpStatus.OK, "Successfully update trash", null);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteTrashById(@PathVariable String id) {
+        trashService.deleteTrashById(id);
+        return ResponseUtil.createResponse(HttpStatus.OK, "Successfully delete trash", null);
     }
 }
