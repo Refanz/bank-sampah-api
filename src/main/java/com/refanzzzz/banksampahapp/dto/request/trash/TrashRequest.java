@@ -1,4 +1,4 @@
-package com.refanzzzz.banksampahapp.dto.request;
+package com.refanzzzz.banksampahapp.dto.request.trash;
 
 import lombok.*;
 

@@ -7,7 +7,7 @@ import lombok.*;
 @Setter
 @Getter
 @Builder
-public class TrashPagingRequest {
+public class PagingRequest {
     private Integer limit;
     private Integer page;
 }

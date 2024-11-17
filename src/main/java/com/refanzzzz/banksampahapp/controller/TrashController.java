@@ -1,9 +1,9 @@
 package com.refanzzzz.banksampahapp.controller;
 
 import com.refanzzzz.banksampahapp.constant.Constant;
-import com.refanzzzz.banksampahapp.dto.request.TrashPagingRequest;
-import com.refanzzzz.banksampahapp.dto.request.TrashRequest;
-import com.refanzzzz.banksampahapp.dto.response.TrashWithPagingResponse;
+import com.refanzzzz.banksampahapp.dto.request.PagingRequest;
+import com.refanzzzz.banksampahapp.dto.request.trash.TrashRequest;
+import com.refanzzzz.banksampahapp.dto.response.trash.TrashWithPagingResponse;
 import com.refanzzzz.banksampahapp.entity.Trash;
 import com.refanzzzz.banksampahapp.service.TrashService;
 import com.refanzzzz.banksampahapp.util.ResponseUtil;
@@ -25,7 +25,7 @@ public class TrashController {
             @RequestParam(name = "page", defaultValue = "1", required = false) int page
 
     ) {
-        TrashPagingRequest pagingRequest = TrashPagingRequest.builder()
+        PagingRequest pagingRequest = PagingRequest.builder()
                 .limit(size)
                 .page(page)
                 .build();

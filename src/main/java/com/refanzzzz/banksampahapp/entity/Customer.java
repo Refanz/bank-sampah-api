@@ -11,17 +11,17 @@ import lombok.*;
 @Getter
 @Builder
 @Entity
+@ToString
 @Table(name = Constant.CUSTOMER_TABLE)
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "phone_numer", length = 15)
+    @Column(name = "phone_number", length = 15)
     private String phoneNumber;
 
     @Column(name = "address")

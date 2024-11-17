@@ -10,6 +10,7 @@ import lombok.*;
 @Setter
 @Getter
 @Builder
+@ToString
 @Entity
 @Table(name = Constant.USER_ACCOUNT_TABLE)
 public class UserAccount {

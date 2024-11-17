@@ -1,0 +1,22 @@
+### GET All Transaction
+GET localhost:8081/api/transactions?size=1&page=2
+
+### GET Get Transaction By ID
+GET localhost:8081/api/transactions/6e265204-3718-4a44-8b89-3996a8b84447
+
+### POST Create Transaction
+POST localhost:8081/api/transactions
+Content-Type: application/json
+
+{
+  "customerId": "1"
+}
+
+### POST Add Transaction Detail
+POST localhost:8081/api/transactions/6e265204-3718-4a44-8b89-3996a8b84447/transaction_details
+Content-Type: application/json
+
+{
+  "totalTrashWeight": 10,
+  "trashId": "434c1a40-5cae-4f58-83ba-5263e80835e8"
+}

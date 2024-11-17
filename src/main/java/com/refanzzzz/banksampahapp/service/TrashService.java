@@ -1,14 +1,14 @@
 package com.refanzzzz.banksampahapp.service;
 
-import com.refanzzzz.banksampahapp.dto.request.TrashPagingRequest;
-import com.refanzzzz.banksampahapp.dto.request.TrashRequest;
-import com.refanzzzz.banksampahapp.dto.response.TrashWithPagingResponse;
+import com.refanzzzz.banksampahapp.dto.request.PagingRequest;
+import com.refanzzzz.banksampahapp.dto.request.trash.TrashRequest;
+import com.refanzzzz.banksampahapp.dto.response.trash.TrashWithPagingResponse;
 import com.refanzzzz.banksampahapp.entity.Trash;
 
 public interface TrashService {
     void saveTrash(TrashRequest request);
 
-    TrashWithPagingResponse getAllTrashWithPagination(TrashPagingRequest request);
+    TrashWithPagingResponse getAllTrashWithPagination(PagingRequest request);
 
     void updateTrash(String id, TrashRequest request);
 

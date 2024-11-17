@@ -1,14 +1,15 @@
 package com.refanzzzz.banksampahapp.service.impl;
 
-import com.refanzzzz.banksampahapp.dto.request.TrashPagingRequest;
-import com.refanzzzz.banksampahapp.dto.request.TrashRequest;
+import com.refanzzzz.banksampahapp.dto.request.PagingRequest;
+import com.refanzzzz.banksampahapp.dto.request.trash.TrashRequest;
 import com.refanzzzz.banksampahapp.dto.response.PagingResponse;
-import com.refanzzzz.banksampahapp.dto.response.TrashResponse;
-import com.refanzzzz.banksampahapp.dto.response.TrashWithPagingResponse;
+import com.refanzzzz.banksampahapp.dto.response.trash.TrashResponse;
+import com.refanzzzz.banksampahapp.dto.response.trash.TrashWithPagingResponse;
 import com.refanzzzz.banksampahapp.entity.Trash;
 import com.refanzzzz.banksampahapp.repository.TrashRepository;
 import com.refanzzzz.banksampahapp.service.TrashService;
 import com.refanzzzz.banksampahapp.util.PagingUtil;
+import com.refanzzzz.banksampahapp.util.Util;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -27,12 +27,12 @@ public class TrashServiceImpl implements TrashService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveTrash(TrashRequest request) {
-        trashRepository.saveTrash(UUID.randomUUID().toString(), request.getName(), request.getUnit(), request.getPrice());
+        trashRepository.saveTrash(Util.generateUUID(), request.getName(), request.getUnit(), request.getPrice());
     }
 
     @Transactional(readOnly = true)
     @Override
-    public TrashWithPagingResponse getAllTrashWithPagination(TrashPagingRequest request) {
+    public TrashWithPagingResponse getAllTrashWithPagination(PagingRequest request) {
         int totalItems = trashRepository.getTrashCount();
         int totalPages = PagingUtil.getTotalPage(totalItems, request.getLimit());
         int offset = PagingUtil.generateOffset(request.getLimit(), request.getPage());

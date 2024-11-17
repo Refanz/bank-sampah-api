@@ -9,6 +9,7 @@ import lombok.*;
 @Setter
 @Getter
 @Builder
+@ToString
 @Entity
 @Table(name = Constant.TRASH_TABLE)
 public class Trash {
