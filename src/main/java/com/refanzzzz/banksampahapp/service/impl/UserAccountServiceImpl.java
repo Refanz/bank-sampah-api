@@ -2,6 +2,7 @@ package com.refanzzzz.banksampahapp.service.impl;
 
 import com.refanzzzz.banksampahapp.constant.UserRole;
 import com.refanzzzz.banksampahapp.dto.request.user.UserRequest;
+import com.refanzzzz.banksampahapp.dto.request.user.UserUpdateRequest;
 import com.refanzzzz.banksampahapp.entity.UserAccount;
 import com.refanzzzz.banksampahapp.repository.UserAccountRepository;
 import com.refanzzzz.banksampahapp.service.UserAccountService;
@@ -46,6 +47,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         return getUserAccountById(userAccountId);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public UserAccount getUserAccountById(String id) {
         List<Object[]> userAccountObject = userAccountRepository.getUserAccountById(id);
@@ -63,6 +65,7 @@ public class UserAccountServiceImpl implements UserAccountService {
         return account.get();
     }
 
+    @Transactional(readOnly = true)
     @Override
     public UserAccount getUserAccountByUsername(String username) {
         List<Object[]> userAccountObject = userAccountRepository.getUserAccountByUsername(username);
@@ -78,6 +81,19 @@ public class UserAccountServiceImpl implements UserAccountService {
         )).findFirst();
 
         return userAccount.get();
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void changePassword(String id, UserUpdateRequest userUpdateRequest) {
+        UserAccount userAccount = getUserAccountById(id);
+
+        if (!passwordEncoder.matches(userUpdateRequest.getCurrentPassword(), userAccount.getPassword()))
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Password do not match");
+
+        String passwordEncoded = passwordEncoder.encode(userUpdateRequest.getNewPassword());
+
+        userAccountRepository.changePasswordUserAccount(passwordEncoded, id);
     }
 
     @Override

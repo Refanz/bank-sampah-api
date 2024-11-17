@@ -5,6 +5,7 @@ import com.refanzzzz.banksampahapp.dto.request.auth.AuthRequest;
 import com.refanzzzz.banksampahapp.dto.response.auth.AuthResponse;
 import com.refanzzzz.banksampahapp.service.AuthService;
 import com.refanzzzz.banksampahapp.util.ResponseUtil;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(Constant.AUTH_API)
 @RequiredArgsConstructor
+@Tag(name = "Authentication", description = "APIs for Authentication")
 public class AuthController {
 
     private final AuthService authService;

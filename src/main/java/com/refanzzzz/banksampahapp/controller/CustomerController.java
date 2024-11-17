@@ -8,6 +8,7 @@ import com.refanzzzz.banksampahapp.dto.response.customer.CustomerResponse;
 import com.refanzzzz.banksampahapp.dto.response.customer.CustomerWithPagingResponse;
 import com.refanzzzz.banksampahapp.service.CustomerService;
 import com.refanzzzz.banksampahapp.util.ResponseUtil;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = Constant.CUSTOMER_API)
 @RequiredArgsConstructor
+@Tag(name = "Customer Management", description = "API to manage Customer")
 public class CustomerController {
 
     private final CustomerService customerService;

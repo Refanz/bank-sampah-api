@@ -8,6 +8,7 @@ import com.refanzzzz.banksampahapp.dto.response.transaction.TransactionResponse;
 import com.refanzzzz.banksampahapp.dto.response.transaction.TransactionWithPagingResponse;
 import com.refanzzzz.banksampahapp.service.TransactionService;
 import com.refanzzzz.banksampahapp.util.ResponseUtil;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = Constant.TRANSACTION_API)
 @RequiredArgsConstructor
+@Tag(name = "Transaction Management", description = "API to manage Transaction (Customer's Trash Data)")
 public class TransactionController {
 
     private final TransactionService transactionService;

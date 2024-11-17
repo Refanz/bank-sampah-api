@@ -16,6 +16,10 @@ public interface UserAccountRepository extends JpaRepository<UserAccount, String
     @Query(nativeQuery = true, value = UserAccountQuery.INSERT_USER)
     void createUserAccount(String id, String username, String password, String role);
 
+    @Modifying
+    @Query(nativeQuery = true, value = UserAccountQuery.UPDATE_USER_PASSWORD)
+    void changePasswordUserAccount(String newPassword, String id);
+
     @Query(nativeQuery = true, value = UserAccountQuery.GET_USER_ACCOUNT_BY_ID)
     List<Object[]> getUserAccountById(String id);
 

@@ -1,6 +1,7 @@
 package com.refanzzzz.banksampahapp.service;
 
 import com.refanzzzz.banksampahapp.dto.request.user.UserRequest;
+import com.refanzzzz.banksampahapp.dto.request.user.UserUpdateRequest;
 import com.refanzzzz.banksampahapp.entity.UserAccount;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -10,4 +11,6 @@ public interface UserAccountService extends UserDetailsService {
     UserAccount getUserAccountById(String id);
 
     UserAccount getUserAccountByUsername(String username);
+
+    void changePassword(String id, UserUpdateRequest userUpdateRequest);
 }

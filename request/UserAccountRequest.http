@@ -1,0 +1,19 @@
+### Create Account
+POST localhost:8081/api/users
+Content-Type: application/json
+
+{
+  "username": "",
+  "password": "",
+  "role": ""
+}
+
+### Change Password
+PUT localhost:8081/api/users/82c6bcda-8cfa-40da-90e8-3097ec1967ad
+Content-Type: application/json
+
+{
+  "currentPassword": "123",
+  "newPassword": "1234"
+}
+

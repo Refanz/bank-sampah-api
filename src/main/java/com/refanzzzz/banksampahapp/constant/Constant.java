@@ -11,4 +11,5 @@ public class Constant {
     public final static String TRANSACTION_API = "/api/transactions";
     public final static String CUSTOMER_API = "/api/customers";
     public final static String AUTH_API = "/api/auth";
+    public static final String USER_ACCOUNT_API = "/api/users";
 }
