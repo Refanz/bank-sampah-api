@@ -13,6 +13,15 @@ public enum UserRole {
         this.name = name;
     }
 
+    public static String getNameByUserRole(String userRole) {
+        for (UserRole role : values()) {
+            if (role.name().equalsIgnoreCase(userRole))
+                return role.getName();
+        }
+
+        return null;
+    }
+
     public static UserRole getUserRoleByName(String name) {
         for (UserRole role : values()) {
             if (role.name().equalsIgnoreCase(name)) return role;

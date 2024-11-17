@@ -1,3 +1,9 @@
+### GET Get All Customers
+GET localhost:8081/api/customers
+
+### GET Get Customer by ID
+GET localhost:8081/api/customers/bf6b331a-455a-46b3-a7bc-4daabf05426d
+
 ### POST Create Customer
 POST localhost:8081/api/customers
 Content-Type: application/json
@@ -10,4 +16,18 @@ Content-Type: application/json
   "address": "Jalan Melati",
   "gender": "Perempuan",
   "role": "Customer"
+}
+
+### DELETE Delete Customer By ID
+DELETE localhost:8081/api/customers/bf6b331a-455a-46b3-a7bc-4daabf05426d
+
+### UPDATE Update Customer By ID
+PUT localhost:8081/api/customers/bf6b331a-455a-46b3-a7bc-4daabf05426d
+Content-Type: application/json
+
+{
+  "name": "Refan Surya",
+  "address": "Jalan Melati No 10",
+  "gender": "Laki - Laki",
+  "phoneNumber": "082209323"
 }

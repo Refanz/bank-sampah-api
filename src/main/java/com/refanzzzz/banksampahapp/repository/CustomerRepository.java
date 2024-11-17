@@ -12,10 +12,10 @@ import java.util.List;
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, String> {
     @Query(nativeQuery = true, value = CustomerQuery.GET_ALL_CUSTOMER_WITH_PAGINATION)
-    List<Customer> getAllCustomer(int limit, int offset);
+    List<Object[]> getAllCustomer(int limit, int offset);
 
     @Query(nativeQuery = true, value = CustomerQuery.GET_CUSTOMER_BY_ID)
-    Customer getCustomerById(String id);
+    List<Object[]> getCustomerById(String id);
 
     @Query(nativeQuery = true, value = CustomerQuery.GET_CUSTOMER_COUNT)
     int getCustomerCount();

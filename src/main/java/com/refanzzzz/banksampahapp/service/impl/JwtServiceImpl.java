@@ -37,8 +37,6 @@ public class JwtServiceImpl implements JwtService {
 
     @Override
     public String generateAccessToken(UserAccount userAccount) {
-        log.info("Generating JWT Token for User: {}", userAccount.getUsername());
-
         try {
             Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
             return JWT.create()

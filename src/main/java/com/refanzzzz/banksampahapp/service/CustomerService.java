@@ -1,19 +1,19 @@
 package com.refanzzzz.banksampahapp.service;
 
 import com.refanzzzz.banksampahapp.dto.request.PagingRequest;
-import com.refanzzzz.banksampahapp.dto.request.customer.CustomerRequest;
+import com.refanzzzz.banksampahapp.dto.request.customer.CustomerCreateRequest;
 import com.refanzzzz.banksampahapp.dto.request.customer.CustomerUpdateRequest;
+import com.refanzzzz.banksampahapp.dto.response.customer.CustomerResponse;
 import com.refanzzzz.banksampahapp.dto.response.customer.CustomerWithPagingResponse;
-import com.refanzzzz.banksampahapp.entity.Customer;
 
 public interface CustomerService {
-    void createCustomer(CustomerRequest request);
+    void createCustomer(CustomerCreateRequest request);
 
     CustomerWithPagingResponse getAllCustomer(PagingRequest pagingRequest);
 
-    void updateCustomer(CustomerUpdateRequest request);
+    void updateCustomer(String id, CustomerUpdateRequest request);
 
     void deleteCustomerById(String id);
 
-    Customer getCustomerById(String id);
+    CustomerResponse getCustomerById(String id);
 }

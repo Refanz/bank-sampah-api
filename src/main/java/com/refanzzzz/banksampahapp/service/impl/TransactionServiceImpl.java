@@ -4,10 +4,10 @@ import com.refanzzzz.banksampahapp.dto.request.PagingRequest;
 import com.refanzzzz.banksampahapp.dto.request.transaction.TransactionDetailRequest;
 import com.refanzzzz.banksampahapp.dto.request.transaction.TransactionRequest;
 import com.refanzzzz.banksampahapp.dto.response.PagingResponse;
+import com.refanzzzz.banksampahapp.dto.response.customer.CustomerResponse;
 import com.refanzzzz.banksampahapp.dto.response.transaction.TransactionDetailResponse;
 import com.refanzzzz.banksampahapp.dto.response.transaction.TransactionResponse;
 import com.refanzzzz.banksampahapp.dto.response.transaction.TransactionWithPagingResponse;
-import com.refanzzzz.banksampahapp.entity.Customer;
 import com.refanzzzz.banksampahapp.entity.Trash;
 import com.refanzzzz.banksampahapp.repository.TransactionRepository;
 import com.refanzzzz.banksampahapp.service.CustomerService;
@@ -38,7 +38,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void createTransaction(TransactionRequest request) {
-        Customer customer = customerService.getCustomerById(request.getCustomerId());
+        CustomerResponse customer = customerService.getCustomerById(request.getCustomerId());
         transactionRepository.createTransaction(Util.generateUUID(), customer.getId(), DateUtil.getCurrentDate());
     }
 
