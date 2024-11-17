@@ -9,10 +9,9 @@ import lombok.*;
 @Setter
 @Getter
 @Builder
-@ToString
 @Entity
 @Table(name = Constant.TRASH_TABLE)
-public class Trash {
+public class Trash extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

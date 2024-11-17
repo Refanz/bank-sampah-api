@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @Builder
-@ToString
 @Entity
 @Table(name = Constant.TRANSACTION_TABLE)
 public class Transaction {

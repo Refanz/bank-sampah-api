@@ -8,7 +8,7 @@ import com.refanzzzz.banksampahapp.dto.response.customer.CustomerResponse;
 import com.refanzzzz.banksampahapp.dto.response.transaction.TransactionDetailResponse;
 import com.refanzzzz.banksampahapp.dto.response.transaction.TransactionResponse;
 import com.refanzzzz.banksampahapp.dto.response.transaction.TransactionWithPagingResponse;
-import com.refanzzzz.banksampahapp.entity.Trash;
+import com.refanzzzz.banksampahapp.dto.response.trash.TrashResponse;
 import com.refanzzzz.banksampahapp.repository.TransactionRepository;
 import com.refanzzzz.banksampahapp.service.CustomerService;
 import com.refanzzzz.banksampahapp.service.TransactionService;
@@ -60,7 +60,7 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public void addTransactionDetail(String transactionId, TransactionDetailRequest request) {
         TransactionResponse transaction = getTransactionById(transactionId);
-        Trash trash = trashService.getTrashById(request.getTrashId());
+        TrashResponse trash = trashService.getTrashById(request.getTrashId());
 
         transactionRepository.addTransactionDetail(
                 Util.generateUUID(),

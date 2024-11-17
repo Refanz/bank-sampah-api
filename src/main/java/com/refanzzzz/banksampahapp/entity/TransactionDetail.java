@@ -9,7 +9,6 @@ import lombok.*;
 @Setter
 @Getter
 @Builder
-@ToString
 @Entity
 @Table(name = Constant.TRANSACTION_DETAIL_TABLE)
 public class TransactionDetail {

@@ -3,6 +3,7 @@ package com.refanzzzz.banksampahapp.controller;
 import com.refanzzzz.banksampahapp.constant.Constant;
 import com.refanzzzz.banksampahapp.dto.request.PagingRequest;
 import com.refanzzzz.banksampahapp.dto.request.trash.TrashRequest;
+import com.refanzzzz.banksampahapp.dto.response.trash.TrashResponse;
 import com.refanzzzz.banksampahapp.dto.response.trash.TrashWithPagingResponse;
 import com.refanzzzz.banksampahapp.entity.Trash;
 import com.refanzzzz.banksampahapp.service.TrashService;
@@ -41,7 +42,7 @@ public class TrashController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getTrashById(@PathVariable String id) {
-        Trash trash = trashService.getTrashById(id);
+        TrashResponse trash = trashService.getTrashById(id);
         return ResponseUtil.createResponse(HttpStatus.OK, "Successfully get trash", trash);
     }
 

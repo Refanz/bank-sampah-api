@@ -8,6 +8,7 @@ import com.refanzzzz.banksampahapp.dto.response.trash.TrashWithPagingResponse;
 import com.refanzzzz.banksampahapp.entity.Trash;
 import com.refanzzzz.banksampahapp.repository.TrashRepository;
 import com.refanzzzz.banksampahapp.service.TrashService;
+import com.refanzzzz.banksampahapp.util.DateUtil;
 import com.refanzzzz.banksampahapp.util.PagingUtil;
 import com.refanzzzz.banksampahapp.util.Util;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,7 +29,13 @@ public class TrashServiceImpl implements TrashService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void saveTrash(TrashRequest request) {
-        trashRepository.saveTrash(Util.generateUUID(), request.getName(), request.getUnit(), request.getPrice());
+        trashRepository.saveTrash(
+                Util.generateUUID(),
+                request.getName(),
+                request.getUnit(),
+                request.getPrice(),
+                DateUtil.getCurrentDate(),
+                DateUtil.getCurrentDate());
     }
 
     @Transactional(readOnly = true)
@@ -54,17 +62,17 @@ public class TrashServiceImpl implements TrashService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void updateTrash(String id, TrashRequest request) {
-        Trash trash = getTrashById(id);
+        TrashResponse trash = getTrashById(id);
 
         if (trash != null) {
-            trashRepository.updateTrash(request.getName(), request.getUnit(), request.getPrice(), id);
+            trashRepository.updateTrash(request.getName(), request.getUnit(), request.getPrice(), DateUtil.getCurrentDate(), id);
         }
     }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void deleteTrashById(String id) {
-        Trash trash = getTrashById(id);
+        TrashResponse trash = getTrashById(id);
 
         if (trash != null) {
             trashRepository.deleteTrashById(id);
@@ -73,10 +81,20 @@ public class TrashServiceImpl implements TrashService {
 
     @Transactional(readOnly = true)
     @Override
-    public Trash getTrashById(String id) {
-        Trash trash = trashRepository.getTrashById(id);
-        if (trash == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Trash is not found!");
-        return trash;
+    public TrashResponse getTrashById(String id) {
+        List<Object[]> trashObject = trashRepository.getTrashById(id);
+
+        if (trashObject.isEmpty())
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Trash is not found!");
+
+        Optional<TrashResponse> trashResponse = trashObject.stream().map(o -> TrashResponse.builder()
+                .id(o[0].toString())
+                .name(o[1].toString())
+                .unit(o[2].toString())
+                .price(o[3] != null ? (Long) o[3] : 0)
+                .build()).findFirst();
+
+        return trashResponse.get();
     }
 
     private TrashResponse mapToTrashResponse(Trash trash) {

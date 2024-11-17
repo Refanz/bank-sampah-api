@@ -11,7 +11,6 @@ import lombok.*;
 @Getter
 @Builder
 @Entity
-@ToString
 @Table(name = Constant.CUSTOMER_TABLE)
 public class Customer {
 
