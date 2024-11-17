@@ -23,7 +23,7 @@ public class TransactionController {
     @PostMapping
     public ResponseEntity<?> createTransaction(@RequestBody TransactionRequest request) {
         transactionService.createTransaction(request);
-        return ResponseUtil.createResponse(HttpStatus.CREATED, "Successfully create transaction", null);
+        return ResponseUtil.createResponse(HttpStatus.CREATED, "Successfully createUserAccount transaction", null);
     }
 
     @PostMapping("/{id}/transaction_details")

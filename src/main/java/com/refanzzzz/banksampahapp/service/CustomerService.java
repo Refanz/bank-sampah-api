@@ -7,7 +7,7 @@ import com.refanzzzz.banksampahapp.dto.response.customer.CustomerWithPagingRespo
 import com.refanzzzz.banksampahapp.entity.Customer;
 
 public interface CustomerService {
-    void saveCustomer(CustomerRequest request);
+    void createCustomer(CustomerRequest request);
 
     CustomerWithPagingResponse getAllCustomer(PagingRequest pagingRequest);
 

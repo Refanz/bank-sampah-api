@@ -1,5 +1,6 @@
 ### GET All Transaction
 GET localhost:8081/api/transactions?size=1&page=2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUcmFzaCBBcHAiLCJpYXQiOjE3MzE4Mzk2MTIsImV4cCI6MTczMTgzOTkxMiwic3ViIjoiODJjNmJjZGEtOGNmYS00MGRhLTkwZTgtMzA5N2VjMTk2N2FkIiwicm9sZSI6IkN1c3RvbWVyIn0.Ml0SVg3MlJ9KxeKM3ZVnScQgvix4m32g5SgihZcd-a0
 
 ### GET Get Transaction By ID
 GET localhost:8081/api/transactions/6e265204-3718-4a44-8b89-3996a8b84447

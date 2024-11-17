@@ -1,0 +1,13 @@
+### POST Create Customer
+POST localhost:8081/api/customers
+Content-Type: application/json
+
+{
+  "name": "Ayu",
+  "phoneNumber": "082209323",
+  "username": "ayu",
+  "password": "123",
+  "address": "Jalan Melati",
+  "gender": "Perempuan",
+  "role": "Customer"
+}
