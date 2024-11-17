@@ -5,6 +5,7 @@ import com.refanzzzz.banksampahapp.dto.request.user.UserRequest;
 import com.refanzzzz.banksampahapp.dto.request.user.UserUpdateRequest;
 import com.refanzzzz.banksampahapp.service.UserAccountService;
 import com.refanzzzz.banksampahapp.util.ResponseUtil;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @Tag(name = "User Account Management", description = "API to Manage User Account")
 @RequestMapping(Constant.USER_ACCOUNT_API)
+@SecurityRequirement(name = "Bearer Authentication")
 public class UserAccountController {
 
     private final UserAccountService userAccountService;
