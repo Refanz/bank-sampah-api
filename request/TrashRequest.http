@@ -1,10 +1,10 @@
 ### POST New Trash
 POST localhost:8081/api/trashes
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUcmFzaCBBcHAiLCJpYXQiOjE3MzE4NTg4NjIsImV4cCI6MTczMTg1OTQ2Miwic3ViIjoiODJjNmJjZGEtOGNmYS00MGRhLTkwZTgtMzA5N2VjMTk2N2FkIiwicm9sZSI6IkN1c3RvbWVyIn0.R0Pq4wq0R9xaYT08lEr_JrQ9I00Nvm0YgWAq8r5UY6k
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJUcmFzaCBBcHAiLCJpYXQiOjE3MzE4NjA4MzEsImV4cCI6MTczMTg2MTQzMSwic3ViIjoiODJjNmJjZGEtOGNmYS00MGRhLTkwZTgtMzA5N2VjMTk2N2FkIiwicm9sZSI6IkN1c3RvbWVyIn0.fy7wZd7lLoY1D2PRBjIIHHrPXaBhr-Zxi5GePk0JxoM
 
 {
-  "name": "Plastik",
+  "name": "Karet",
   "price": 1500,
   "unit": "kg"
 }

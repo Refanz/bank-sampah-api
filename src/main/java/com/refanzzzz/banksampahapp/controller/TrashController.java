@@ -49,7 +49,7 @@ public class TrashController {
     @PostMapping
     public ResponseEntity<?> saveTrash(@RequestBody TrashRequest request) {
         trashService.saveTrash(request);
-        return ResponseUtil.createResponse(HttpStatus.CREATED, "Successfully createUserAccount new trash", null);
+        return ResponseUtil.createResponse(HttpStatus.CREATED, "Successfully create new trash", null);
     }
 
     @PutMapping("/{id}")
