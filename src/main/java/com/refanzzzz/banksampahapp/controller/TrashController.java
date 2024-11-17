@@ -5,7 +5,6 @@ import com.refanzzzz.banksampahapp.dto.request.PagingRequest;
 import com.refanzzzz.banksampahapp.dto.request.trash.TrashRequest;
 import com.refanzzzz.banksampahapp.dto.response.trash.TrashResponse;
 import com.refanzzzz.banksampahapp.dto.response.trash.TrashWithPagingResponse;
-import com.refanzzzz.banksampahapp.entity.Trash;
 import com.refanzzzz.banksampahapp.service.TrashService;
 import com.refanzzzz.banksampahapp.util.ResponseUtil;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
